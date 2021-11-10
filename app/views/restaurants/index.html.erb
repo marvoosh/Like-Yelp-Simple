@@ -1,0 +1,16 @@
+<div class=container>
+  <div>
+    <h1>Restaurants</h1>
+    <h5><%= link_to 'Add new restaurant',  new_restaurant_path%></h5>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @restaurants.each do |restaurant| %>
+      <li class="list-group-item">
+        <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
+        <%= restaurant.reviews.count %> reviews
+        <p><%= restaurant.category %> | <%= link_to 'Delete', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,30 @@
+<div class='container'>
+  <h1><%= @restaurant.name %></h1>
+  <p><%= @restaurant.category %></p>
+  <h3><%= @restaurant.address %> | <%= @restaurant.phone_number %></h3>
+
+  <div>
+    <p></p>
+    <%= link_to 'Back', restaurants_path, class: "btn btn-dark" %>
+    <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-dark" %>
+    <%= link_to 'Add review', new_restaurant_review_path(@restaurant) , class: "btn btn-dark" %>
+
+    <p></p>
+  </div>
+
+  <div>
+    <h2>Reviews</h2>
+    <ul class="list-group list-group-flush">
+      <% @restaurant.reviews.each do |review| %>
+      <li class="list-group-item">
+        <%= review.content %> |
+        <% if review.rating == 0 %>
+          <%= '🤷' %>
+        <% else %>
+          <%= '🌟' * review.rating %>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
